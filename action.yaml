@@ -10,6 +10,6 @@ jobs:
   example_job:
     name: Pass input and secrets to my-action
     steps:
-      - uses: ./.github/actions/main.yaml@master
+      - uses: ./.github/workflows/action-01.yaml@master
         with:
           home: ${{ inputs.home }}
