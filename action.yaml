@@ -1,10 +1,11 @@
 name: "Action 01"
 
 inputs:
-	home:
-		description: "Incoming 'home' var"
-		required: true
-		default: "Action 01 home"
+  home:
+    description: "Incoming 'home' var"
+    required: true
+    default: "Action 01 home"
+
 jobs:
   example_job:
     name: Pass input and secrets to my-action
