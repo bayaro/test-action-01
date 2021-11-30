@@ -1,7 +1,6 @@
 name: action-01
 on:
-  #workflow_dispatch:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       name:
         description: 'Person to greet'
@@ -9,8 +8,17 @@ on:
         default: 'Mona the Octocat'
       home:
         description: 'location'
-        required: false
+        required: true
         default: 'The Octoverse'
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      home:
+        required: false
+        type: string
+        default: "The Default Location"
     outputs:
       output1:
         value: ${{ jobs.say_hello.outputs.output1 }}
