@@ -1,4 +1,4 @@
-name: Manually triggered workflow
+name: action-01
 on:
   workflow_dispatch:
     inputs:
