@@ -10,12 +10,20 @@ on:
         description: 'location'
         required: false
         default: 'The Octoverse'
+  workflow_call:
+    outputs:
+      now:
+        value: ${{ jobs.say_hello.outputs.output1 }}
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
+    outputs:
+      now: ${{ steps.shownow.outputs.firstword }}
     steps:
-      - run: |
+      - id: shownow
+        run: |
           echo -n "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
           echo "Now is $(date)"
+          echo "::set-output name=shownow::$(date)"
