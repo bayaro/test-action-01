@@ -1,20 +1,20 @@
-name: 'test action 01'
+name: Manually triggered workflow
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
 
-description: 'Great Action 01'
-inputs:
- test-var:  # id of input
-   description: 'test variable'
-   required: true
-   default: 'test'
-outputs:
- random-number:
-   description: "Random number"
-   value: ${{ steps.random-number-generator.outputs.random-id }}
-runs:
- using: "composite"
- steps:
-   - run: echo Hello ${{ inputs.test-var }}.
-     shell: bash
-   - id: random-number-generator
-     run: echo "::set-output name=random-id::$(echo $RANDOM)"
-     shell: bash
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Hello ${{ github.event.inputs.name }}!"
+          echo "- in ${{ github.event.inputs.home }}!"
